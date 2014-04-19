@@ -2,6 +2,8 @@
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 DATE=`date +%s`
 
+mkdir $HOME/.vim/vimswap
+
 if [ -d ~/.vim ] 
 then
   mv -v ~/.vim ~/.vim.$DATE
@@ -11,6 +13,7 @@ if [ -d ~/.vimrc ]
 then
   mv -v ~/.vimrc ~/.vimrc.$DATE
 fi
+
 
 ln -sfv $DIR ~/.vim
 ln -sfv $DIR/vimrc ~/.vimrc
