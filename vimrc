@@ -111,7 +111,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'walm/jshint.vim'
-Bundle 'zdwolfe/vim-gitwildignore' 
 
 filetype plugin indent on
 " Syntastic syntax checker must go after Bundle 
