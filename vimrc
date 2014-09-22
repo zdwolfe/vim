@@ -1,4 +1,3 @@
-" A lot of this is based on github.com/jdavis/dotfiles
 set nocompatible
 
 function! CurDir()
@@ -14,14 +13,6 @@ function! HasPaste()
     endif
 endfunction
 
-nmap <leader>p :set paste!<BAR>set paste?<CR>
-nm <leader>t :tabnew<cr>
-
-set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \
-set statusline+=\ \ \ [%{&ff}/%Y]
-set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\
-set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
-
 set history=1000
 set number
 syntax on
@@ -29,9 +20,7 @@ set backspace=indent,eol,start
 set ignorecase smartcase
 set hlsearch
 set smartindent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set autoindent
 set expandtab
 set laststatus=2
 set directory=$HOME/.vim/vimswap " swp and swo files are a pain in the ass to keep around in ./
@@ -41,8 +30,6 @@ colorscheme wombat256
 
 " Unhighlight (:nohlsearch) the last search pattern on Enter
 nn <CR> :noh<CR><CR>
-
-set autoindent
 
 " allow multiple indentation/deindentation in visual mode
 vnoremap < <gv
@@ -62,26 +49,26 @@ if has('persistent_undo')
     set undoreload=10000
 endif
 
-" setup for othree/html5.vim
-let g:html5_event_handler_attributes_complete = 0
-let g:html5_rdfa_attributes_complete = 0
-let g:html5_microdata_attributes_complete = 0
-let g:html5_aria_attributes_complete = 0
-
 
 " Bundle stuff goes last
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'ervandew/supertab'
 Bundle 'gmarik/vundle'
-Bundle 'groenewege/vim-less'
+
+" tab completion
+Bundle 'ervandew/supertab'
+
+Bundle 'othree/html5.vim' 
+" setup for othree/html5.vim
+" let g:html5_event_handler_attributes_complete = 0
+" let g:html5_rdfa_attributes_complete = 0
+" let g:html5_microdata_attributes_complete = 0
+" let g:html5_aria_attributes_complete = 0
 
 Bundle 'mileszs/ack.vim'
-Bundle 'othree/html5.vim' 
 Bundle 'othree/javascript-libraries-syntax.vim' 
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
 Bundle 'walm/jshint.vim'
 
 " Syntastic syntax checker must go after Bundle 
